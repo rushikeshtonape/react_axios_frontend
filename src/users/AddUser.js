@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddUser = () => {
+  const [user, setUser] = useState({
+    name: "",
+    username: "",
+    email: "",
+  });
+  const { name, username, email } = user;
+
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <div className="container">
@@ -16,6 +26,8 @@ const AddUser = () => {
                 className="form-control"
                 name="name"
                 placeholder="Enter the Name"
+                value={name}
+                onChange={(e) => onInputChange(e)}
               />
             </div>
 
@@ -28,6 +40,8 @@ const AddUser = () => {
                 className="form-control"
                 name="username"
                 placeholder="Enter the UserName"
+                value={username}
+                onChange={(e) => onInputChange(e)}
               />
             </div>
 
@@ -40,6 +54,8 @@ const AddUser = () => {
                 className="form-control"
                 name="email"
                 placeholder="Enter the Email"
+                value={email}
+                onChange={(e) => onInputChange(e)}
               />
             </div>
             <button className="btn btn-primary" type="submit">
