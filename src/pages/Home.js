@@ -39,19 +39,13 @@ export const Home = () => {
                 <td>{user.id}</td>
 
                 <td>{user.title}</td>
+                <td>
+                  <button className="btn btn-primary ">view</button>
+                  <button className="btn btn-outline-primary mx-2">edit</button>
+                  <button className="btn btn-danger">delete</button>
+                </td>
               </tr>
             ))}
-
-            {/* {users.map((user, index) => (
-              <tr>
-                <th scope="row" key={index}>
-                  {index + 1}
-                </th>
-                <td>{user.id}</td>
-                <td>rushikesh</td>
-                <td>{user.title}</td>
-              </tr>
-            ))} */}
           </tbody>
         </table>
       </div>
