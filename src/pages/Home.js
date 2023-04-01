@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 export const Home = () => {
   const [users, setUsers] = useState([]);
-  console.log(setUsers);
+
+  const { id } = useParams();
+
   useEffect(() => {
     loadUsers();
   }, []);
@@ -15,7 +18,11 @@ export const Home = () => {
     setUsers(result.data);
     //console.log(result.data.userId);
   };
-  // setUsers("");
+
+  const deleteUser = async (id) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  };
+
   return (
     <div className="container">
       <div className="py-4">
@@ -41,8 +48,18 @@ export const Home = () => {
                 <td>{user.title}</td>
                 <td>
                   <button className="btn btn-primary ">view</button>
-                  <button className="btn btn-outline-primary mx-2">edit</button>
-                  <button className="btn btn-danger">delete</button>
+                  <Link
+                    className="btn btn-outline-primary mx-2"
+                    to={`/edituser/${user.id}`}
+                  >
+                    edit
+                  </Link>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteUser(user.id)}
+                  >
+                    delete
+                  </button>
                 </td>
               </tr>
             ))}

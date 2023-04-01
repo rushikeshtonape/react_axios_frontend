@@ -1,6 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const AddUser = () => {
+  let navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     username: "",
@@ -10,6 +13,12 @@ const AddUser = () => {
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("https://httpbin.org/post", user);
+    navigate("/");
   };
   return (
     <>
@@ -58,10 +67,16 @@ const AddUser = () => {
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button className="btn btn-primary" type="submit">
+            <button
+              className="btn btn-primary"
+              type="submit"
+              onClick={(e) => onSubmit(e)}
+            >
               Submit
             </button>
-            <button className="btn btn-outline-danger m-2">Cancel</button>
+            <Link to="/" className="btn btn-outline-danger m-2">
+              Cancel
+            </Link>
           </div>
         </div>
       </div>
