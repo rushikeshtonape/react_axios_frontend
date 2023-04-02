@@ -11,7 +11,7 @@ const ViewUser = () => {
 
   useEffect(() => {
     loadUser();
-  });
+  }, []);
 
   const loadUser = async () => {
     const result = await axios.get(
