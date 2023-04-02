@@ -6,9 +6,9 @@ export const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Axios Requests
-          </a>
+          <Link className="navbar-brand" to={"/"}>
+            Axios Requests Project
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

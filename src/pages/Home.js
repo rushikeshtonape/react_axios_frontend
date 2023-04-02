@@ -47,7 +47,9 @@ export const Home = () => {
 
                 <td>{user.title}</td>
                 <td>
-                  <button className="btn btn-primary ">view</button>
+                  <Link className="btn btn-primary " to="/viewuser">
+                    view
+                  </Link>
                   <Link
                     className="btn btn-outline-primary mx-2"
                     to={`/edituser/${user.id}`}
